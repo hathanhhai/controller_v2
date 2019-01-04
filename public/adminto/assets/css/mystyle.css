@@ -1,0 +1,38 @@
+@media only screen and (min-width: 992px) {
+   .bm-mobile{
+        display: none
+   }
+
+}
+
+@media only screen and (min-width: 992px) {
+    .mt-mobile{
+        margin-top: 15px;
+    }
+ 
+ }
+ 
+ .out-on{
+    box-shadow: 0 0 40px red;
+ }
+
+ @media only screen and (max-width: 992px) {
+    .max-width{
+       width: 50% !important;
+    }
+ 
+ }
+
+ .out-on{
+     box-shadow: 0 0 40px red;
+     background-color: #808080e8;
+ }
+
+ 
+@media only screen and (min-width: 1025px) {
+    .hover-pc:hover{
+        box-shadow: 0 0 40px blue !important;
+    }
+ 
+ }
+ 
