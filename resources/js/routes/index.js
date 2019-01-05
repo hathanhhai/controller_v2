@@ -13,31 +13,31 @@ const router = new Router({
             path:'/',
             name:'index',
             component:Dashboard,
-            meta: { requiresAuth: true}
+            // meta: { requiresAuth: true}
         },
         {
             path:'/dashboard',
             name:'dashboard',
             component:Dashboard,
-            meta: { requiresAuth: true}
+            // meta: { requiresAuth: true}
         },
         {
             path:'/controller',
             name:'controller',
             component:Controller,
-            meta: { requiresAuth: true}
+            // meta: { requiresAuth: true}
         },
         {
             path:'/camera',
             name:'camera',
             component:Camera,
-            meta: { requiresAuth: true}
+            // meta: { requiresAuth: true}
         },
         {
             path:'/setting',
             name:'setting',
             component:Setting,
-            meta: { requiresAuth: true}
+            // meta: { requiresAuth: true}
         },
         {
             path:'/login',

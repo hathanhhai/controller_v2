@@ -428,12 +428,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Navigation: _Navigation__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  methods: {
-    logout: function logout() {
-      localStorage.setItem("login", false);
-      this.$router.push('/login');
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -510,6 +505,19 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -719,6 +727,95 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3300,7 +3397,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -3357,7 +3454,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -3395,7 +3492,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -11048,51 +11145,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "menu-extras topbar-custom" }, [
-            _c(
-              "ul",
-              {
-                staticClass: "list-unstyled topbar-right-menu float-right mb-0"
-              },
-              [
-                _vm._m(0),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _c("li", { staticClass: "dropdown notification-list" }, [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "dropdown-menu dropdown-menu-right profile-dropdown "
-                    },
-                    [
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _vm._m(4),
-                      _vm._v(" "),
-                      _vm._m(5),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "dropdown-item notify-item",
-                          attrs: { href: "javascript:void(0);" },
-                          on: { click: _vm.logout }
-                        },
-                        [
-                          _c("i", { staticClass: "ti-power-off m-r-5" }),
-                          _vm._v(" Logout\n                            ")
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ]
-            )
-          ]),
+          _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "clearfix" })
         ])
@@ -11108,120 +11161,131 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "menu-item" }, [
-      _c("a", { staticClass: "navbar-toggle nav-link" }, [
-        _c("div", { staticClass: "lines" }, [
-          _c("span"),
+    return _c("div", { staticClass: "menu-extras topbar-custom" }, [
+      _c(
+        "ul",
+        { staticClass: "list-unstyled topbar-right-menu float-right mb-0" },
+        [
+          _c("li", { staticClass: "menu-item" }, [
+            _c("a", { staticClass: "navbar-toggle nav-link" }, [
+              _c("div", { staticClass: "lines" }, [
+                _c("span"),
+                _vm._v(" "),
+                _c("span"),
+                _vm._v(" "),
+                _c("span")
+              ])
+            ])
+          ]),
           _vm._v(" "),
-          _c("span"),
-          _vm._v(" "),
-          _c("span")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("div", { staticClass: "notification-box" }, [
-        _c("ul", { staticClass: "list-inline mb-0" }, [
           _c("li", [
+            _c("div", { staticClass: "notification-box" }, [
+              _c("ul", { staticClass: "list-inline mb-0" }, [
+                _c("li", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "right-bar-toggle",
+                      attrs: { href: "javascript:void(0);" }
+                    },
+                    [_c("i", { staticClass: "mdi mdi-bell-outline noti-icon" })]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "noti-dot" }, [
+                    _c("span", { staticClass: "dot" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "pulse" })
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "dropdown notification-list" }, [
             _c(
               "a",
               {
-                staticClass: "right-bar-toggle",
-                attrs: { href: "javascript:void(0);" }
+                staticClass:
+                  "nav-link dropdown-toggle waves-effect waves-light nav-user",
+                attrs: {
+                  "data-toggle": "dropdown",
+                  href: "#",
+                  role: "button",
+                  "aria-haspopup": "false",
+                  "aria-expanded": "false"
+                }
               },
-              [_c("i", { staticClass: "mdi mdi-bell-outline noti-icon" })]
+              [
+                _c("img", {
+                  staticClass: "rounded-circle",
+                  attrs: {
+                    src: "/adminto/assets/images/users/avatar-1.jpg",
+                    alt: "user"
+                  }
+                })
+              ]
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "noti-dot" }, [
-              _c("span", { staticClass: "dot" }),
-              _vm._v(" "),
-              _c("span", { staticClass: "pulse" })
-            ])
+            _c(
+              "div",
+              {
+                staticClass:
+                  "dropdown-menu dropdown-menu-right profile-dropdown "
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "dropdown-item notify-item",
+                    attrs: { href: "javascript:void(0);" }
+                  },
+                  [
+                    _c("i", { staticClass: "ti-user m-r-5" }),
+                    _vm._v(" Profile\n                            ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "dropdown-item notify-item",
+                    attrs: { href: "javascript:void(0);" }
+                  },
+                  [
+                    _c("i", { staticClass: "ti-settings m-r-5" }),
+                    _vm._v(" Settings\n                            ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "dropdown-item notify-item",
+                    attrs: { href: "javascript:void(0);" }
+                  },
+                  [
+                    _c("i", { staticClass: "ti-lock m-r-5" }),
+                    _vm._v(" Lock screen\n                            ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "dropdown-item notify-item",
+                    attrs: { href: "/authentication/logout" }
+                  },
+                  [
+                    _c("i", { staticClass: "ti-power-off m-r-5" }),
+                    _vm._v(" Logout\n                            ")
+                  ]
+                )
+              ]
+            )
           ])
-        ])
-      ])
+        ]
+      )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass:
-          "nav-link dropdown-toggle waves-effect waves-light nav-user",
-        attrs: {
-          "data-toggle": "dropdown",
-          href: "#",
-          role: "button",
-          "aria-haspopup": "false",
-          "aria-expanded": "false"
-        }
-      },
-      [
-        _c("img", {
-          staticClass: "rounded-circle",
-          attrs: {
-            src: "/adminto/assets/images/users/avatar-1.jpg",
-            alt: "user"
-          }
-        })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item notify-item",
-        attrs: { href: "javascript:void(0);" }
-      },
-      [
-        _c("i", { staticClass: "ti-user m-r-5" }),
-        _vm._v(" Profile\n                            ")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item notify-item",
-        attrs: { href: "javascript:void(0);" }
-      },
-      [
-        _c("i", { staticClass: "ti-settings m-r-5" }),
-        _vm._v(" Settings\n                            ")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item notify-item",
-        attrs: { href: "javascript:void(0);" }
-      },
-      [
-        _c("i", { staticClass: "ti-lock m-r-5" }),
-        _vm._v(" Lock screen\n                            ")
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -11362,9 +11426,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Camera")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "card m-b-20 card-inverse text-white" }, [
+          _c("img", {
+            staticClass: "card-img img-fluid",
+            attrs: {
+              src: "/adminto/assets/images/gallery/6.jpg",
+              alt: "Card image"
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "card m-b-20 card-inverse text-white" }, [
+          _c("img", {
+            staticClass: "card-img img-fluid",
+            attrs: {
+              src: "/adminto/assets/images/gallery/6.jpg",
+              alt: "Card image"
+            }
+          })
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -11657,9 +11752,171 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Dashboard")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("h1", [_vm._v("Dashboard")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xl-4 col-md-6" }, [
+          _c("div", { staticClass: "card-box" }, [
+            _c("h4", { staticClass: "header-title mt-0 m-b-30" }, [
+              _vm._v("Mức nước")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "widget-box-2" }, [
+              _c("div", { staticClass: "widget-detail-2" }, [
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "badge badge-success badge-pill pull-left m-t-20"
+                  },
+                  [
+                    _vm._v("95%\n"),
+                    _c("i", { staticClass: "mdi mdi-trending-up" })
+                  ]
+                ),
+                _vm._v(" "),
+                _c("h2", { staticClass: "mb-0" }, [_vm._v(" 3452/3561 ")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "text-muted m-b-25" }, [
+                  _vm._v("Lần bơm cuối cùng: 12:30 23/12/2019")
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "progress progress-bar-success-alt progress-sm mb-0"
+                },
+                [
+                  _c("div", {
+                    staticClass: "progress-bar progress-bar-success",
+                    staticStyle: { width: "95%" },
+                    attrs: {
+                      role: "progressbar",
+                      "aria-valuenow": "77",
+                      "aria-valuemin": "0",
+                      "aria-valuemax": "100"
+                    }
+                  })
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xl-4 col-md-6" }, [
+          _c("div", { staticClass: "card-box" }, [
+            _c("h4", { staticClass: "header-title mt-0 m-b-30" }, [
+              _vm._v("Nhiệt độ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "widget-box-2" }, [
+              _c("div", { staticClass: "widget-detail-2" }, [
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "badge badge-primary badge-pill pull-left m-t-20"
+                  },
+                  [
+                    _vm._v("32%\n                               "),
+                    _c("i", { staticClass: "mdi mdi-trending-down" })
+                  ]
+                ),
+                _vm._v(" "),
+                _c("h2", { staticClass: "mb-0" }, [_vm._v(" 32°C ")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "text-muted m-b-25 text-success" }, [
+                  _vm._v("Trạng thái: Ổn định")
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "progress progress-bar-primary-alt progress-sm mb-0"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "progress-bar progress-bar-primary",
+                      staticStyle: { width: "77%" },
+                      attrs: {
+                        role: "progressbar",
+                        "aria-valuenow": "77",
+                        "aria-valuemin": "0",
+                        "aria-valuemax": "100"
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "sr-only" }, [
+                        _vm._v("77% Complete")
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xl-4 col-md-6" }, [
+          _c("div", { staticClass: "card-box" }, [
+            _c("h4", { staticClass: "header-title m-t-0 m-b-30" }, [
+              _c("i", { staticClass: "mdi mdi-notification-clear-all m-r-5" }),
+              _vm._v("\n                       Đang Hoạt Động")
+            ]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "list-group m-b-0 user-list" }, [
+              _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v("Bóng 1 - Hoạt động: 3:30")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v("Bóng 1 - Hoạt động: 3:30")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v("Bóng 1 - Hoạt động: 3:30")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v("Bóng 1 - Hoạt động: 3:30")
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -11689,19 +11946,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "alert alert-success" }, [
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "alert",
-            "aria-hidden": "true"
-          }
-        },
-        [_vm._v("×")]
-      ),
-      _vm._v(" "),
       _c("strong", [_vm._v("Title!")]),
       _vm._v(" Setting\n")
     ])
@@ -27648,38 +27892,28 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
     path: '/',
     name: 'index',
-    component: _components_Pages_Dashboard__WEBPACK_IMPORTED_MODULE_2__["default"],
-    meta: {
-      requiresAuth: true
-    }
+    component: _components_Pages_Dashboard__WEBPACK_IMPORTED_MODULE_2__["default"] // meta: { requiresAuth: true}
+
   }, {
     path: '/dashboard',
     name: 'dashboard',
-    component: _components_Pages_Dashboard__WEBPACK_IMPORTED_MODULE_2__["default"],
-    meta: {
-      requiresAuth: true
-    }
+    component: _components_Pages_Dashboard__WEBPACK_IMPORTED_MODULE_2__["default"] // meta: { requiresAuth: true}
+
   }, {
     path: '/controller',
     name: 'controller',
-    component: _components_Pages_Controller__WEBPACK_IMPORTED_MODULE_4__["default"],
-    meta: {
-      requiresAuth: true
-    }
+    component: _components_Pages_Controller__WEBPACK_IMPORTED_MODULE_4__["default"] // meta: { requiresAuth: true}
+
   }, {
     path: '/camera',
     name: 'camera',
-    component: _components_Pages_Camera__WEBPACK_IMPORTED_MODULE_5__["default"],
-    meta: {
-      requiresAuth: true
-    }
+    component: _components_Pages_Camera__WEBPACK_IMPORTED_MODULE_5__["default"] // meta: { requiresAuth: true}
+
   }, {
     path: '/setting',
     name: 'setting',
-    component: _components_Pages_Setting__WEBPACK_IMPORTED_MODULE_6__["default"],
-    meta: {
-      requiresAuth: true
-    }
+    component: _components_Pages_Setting__WEBPACK_IMPORTED_MODULE_6__["default"] // meta: { requiresAuth: true}
+
   }, {
     path: '/login',
     name: 'login',
@@ -27751,8 +27985,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\controller_v2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\controller_v2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\8.Projects\controller_v2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\8.Projects\controller_v2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

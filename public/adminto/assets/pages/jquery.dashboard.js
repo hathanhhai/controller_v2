@@ -104,5 +104,5 @@
 //initializing 
 function($) {
     "use strict";
-    $.Dashboard1.init();
+    // $.Dashboard1.init();
 }(window.jQuery);

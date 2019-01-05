@@ -79,7 +79,7 @@
                                 </a>
 
                                 <!-- item-->
-                                <a @click="logout" href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a  href="/authentication/logout" class="dropdown-item notify-item">
                                     <i class="ti-power-off m-r-5"></i> Logout
                                 </a>
 
@@ -109,10 +109,7 @@
         name: "Header",
         components: {Navigation},
         methods:{
-            logout(){
-                localStorage.setItem("login",false);
-                this.$router.push('/login')
-            }
+
         }
     }
 </script>

@@ -57,4 +57,7 @@
 <script src="{{asset('adminto/assets/js/jquery.core.js')}}"></script>
 <script src="{{asset('adminto/assets/js/jquery.app.js')}}"></script>
 
+
+
+
 </html>
