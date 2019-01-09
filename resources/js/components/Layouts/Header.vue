@@ -27,63 +27,24 @@
                     <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
                         <li class="menu-item">
-                            <!-- Mobile menu toggle-->
-                            <a class="navbar-toggle nav-link">
-                                <div class="lines">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </a>
-                            <!-- End mobile menu toggle-->
-                        </li>
-
-                        <li>
-                            <!-- Notification -->
-                            <div class="notification-box">
-                                <ul class="list-inline mb-0">
-                                    <li>
-                                        <a href="javascript:void(0);" class="right-bar-toggle">
-                                            <i class="mdi mdi-bell-outline noti-icon"></i>
-                                        </a>
-                                        <div class="noti-dot">
-                                            <span class="dot"></span>
-                                            <span class="pulse"></span>
-                                        </div>
-                                    </li>
-                                </ul>
+                        <!-- Mobile menu toggle-->
+                        <a class="navbar-toggle nav-link">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
                             </div>
-                            <!-- End Notification bar -->
-                        </li>
+                        </a>
+                        <!-- End mobile menu toggle-->
+                    </li>
 
-                        <li class="dropdown notification-list">
-                            <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown"
-                               href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="/adminto/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+
+
+
+                        <li class="notification-list btn-logout">
+                            <a @click="removeLogin"  href="/authentication/logout" class="">
+                                <i style="color:white" class="ti-power-off m-r-5"></i> <i style="color:white">Logout</i>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="ti-user m-r-5"></i> Profile
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="ti-settings m-r-5"></i> Settings
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="ti-lock m-r-5"></i> Lock screen
-                                </a>
-
-                                <!-- item-->
-                                <a  href="/authentication/logout" class="dropdown-item notify-item">
-                                    <i class="ti-power-off m-r-5"></i> Logout
-                                </a>
-
-                            </div>
                         </li>
 
                     </ul>
@@ -109,7 +70,11 @@
         name: "Header",
         components: {Navigation},
         methods:{
-
+            removeLogin(){
+                localStorage.removeItem("vuex");
+                this.$store.dispatch("setToken",null);
+                this.$store.dispatch("setUser",null);
+            }
         }
     }
 </script>

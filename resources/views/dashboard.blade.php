@@ -22,6 +22,8 @@
     <link href="{{asset('adminto/assets/css/mystyle.css')}}" rel="stylesheet" type="text/css"/>
     <script src="{{asset('adminto/assets/js/modernizr.min.js')}}"></script>
 
+    <meta name="user" content="@if(\Illuminate\Support\Facades\Auth::check()) {{ \Illuminate\Support\Facades\Auth::user()}} @endif">
+
 </head>
 <body>
 
@@ -30,10 +32,11 @@
 
 </div>
 </body>
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('adminto/assets/js/jquery.min.js')}}"></script>
+
 
 <!-- jQuery  -->
-<script src="{{asset('adminto/assets/js/jquery.min.js')}}"></script>
+
 <script src="{{asset('adminto/assets/js/popper.min.js')}}"></script>
 <script src="{{asset('adminto/assets/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('adminto/assets/js/waves.js')}}"></script>
@@ -52,12 +55,10 @@
 <!-- Dashboard init -->
 <script src="{{asset('adminto/assets/pages/jquery.dashboard.js')}}"></script>
 
-
+<script src="{{asset('js/app.js')}}"></script>
 <!-- App js -->
 <script src="{{asset('adminto/assets/js/jquery.core.js')}}"></script>
 <script src="{{asset('adminto/assets/js/jquery.app.js')}}"></script>
-
-
 
 
 </html>

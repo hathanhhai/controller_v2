@@ -13,30 +13,35 @@ const router = new Router({
             path:'/',
             name:'index',
             component:Dashboard,
+            mode: 'history'
             // meta: { requiresAuth: true}
         },
         {
             path:'/dashboard',
             name:'dashboard',
             component:Dashboard,
+            mode: 'history'
             // meta: { requiresAuth: true}
         },
         {
             path:'/controller',
             name:'controller',
             component:Controller,
+            mode: 'history'
             // meta: { requiresAuth: true}
         },
         {
             path:'/camera',
             name:'camera',
             component:Camera,
+            mode: 'history'
             // meta: { requiresAuth: true}
         },
         {
             path:'/setting',
             name:'setting',
             component:Setting,
+            mode: 'history'
             // meta: { requiresAuth: true}
         },
         {
@@ -62,7 +67,7 @@ router.beforeEach((to, from, next) => {
             next();
         }
     } else {
-        console.log("4");
+
         next();
     }
 })
