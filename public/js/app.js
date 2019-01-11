@@ -755,14 +755,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AreaA",
   data: function data() {
-    return {};
+    return {
+      water_height: 0,
+      timeRelay: 0,
+      volume: 0,
+      percent: 0
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    this.$socket.on('distant_number_server', function (data) {
+      _this.water_height = data.distant;
+      _this.volume = data.volume;
+    });
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    this.$socket.emit("distant_button_client", {
+      user: this.$store.state.user
+    });
+    var time = Math.floor(Math.random() * 8500) + 2000;
+    var timeRelay = time / 1000;
+    this.timeRelay = timeRelay.toFixed(2);
+    setInterval(function () {
+      _this2.$socket.emit("distant_button_client", {
+        user: _this2.$store.state.user
+      });
+    }, time);
+    clearTimeout();
   },
   methods: {
     sendSocketTest: function sendSocketTest() {
-      this.$socket.emit("btn-test", this.$store.state.user);
+      this.$socket.emit("distant_button_client", {
+        user: this.$store.state.user
+      });
+    }
+  },
+  computed: {
+    percentVolume: function percentVolume() {
+      var percent = parseInt(this.volume * 100 / 3467);
+      return percent <= 100 ? percent : 0;
     }
   }
 });
@@ -3720,7 +3767,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -12300,54 +12347,98 @@ var render = function() {
             _vm._v("Mức nước")
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("p", {}, [
+            _vm._v("Số Giây Trì Hoãn: " + _vm._s(_vm.timeRelay) + " (S)")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "widget-box-2" }, [
+            _c("div", { staticClass: "widget-detail-2" }, [
+              _vm.percentVolume > 60
+                ? _c(
+                    "span",
+                    {
+                      staticClass:
+                        "badge badge-success badge-pill pull-left m-t-20"
+                    },
+                    [
+                      _vm._v(_vm._s(_vm.percentVolume) + "%"),
+                      _c("i", { staticClass: "mdi mdi-trending-up" })
+                    ]
+                  )
+                : _c(
+                    "span",
+                    {
+                      staticClass:
+                        "badge badge-danger badge-pill pull-left m-t-20"
+                    },
+                    [
+                      _vm._v(_vm._s(_vm.percentVolume) + "%"),
+                      _c("i", { staticClass: "mdi mdi-trending-down" })
+                    ]
+                  ),
+              _vm._v(" "),
+              _vm.volume > 0
+                ? _c("h2", { staticClass: "mb-0" }, [
+                    _vm._v(" " + _vm._s(_vm.volume) + "/3467 (L)")
+                  ])
+                : _c("h2", { staticClass: "mb-0 text-danger" }, [
+                    _vm._v(" Giá trị vược mức")
+                  ]),
+              _vm._v(" "),
+              _vm.percentVolume > 60
+                ? _c("p", { staticClass: "text-muted m-b-25 text-success" }, [
+                    _vm._v(
+                      "Chiều Cao: " + _vm._s(_vm.water_height) + "/216 (CM)"
+                    )
+                  ])
+                : _c("p", { staticClass: "m-b-25 text-danger" }, [
+                    _vm._v(
+                      "Chiều Cao: " + _vm._s(_vm.water_height) + "/216 (CM)"
+                    )
+                  ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "progress progress-bar-success-alt progress-sm mb-0"
+              },
+              [
+                _vm.percentVolume > 60
+                  ? _c("div", {
+                      staticClass: "progress-bar progress-bar-success",
+                      style: "width:" + _vm.percentVolume + "%",
+                      attrs: {
+                        role: "progressbar",
+                        "aria-valuenow": "77",
+                        "aria-valuemin": "0",
+                        "aria-valuemax": "100"
+                      }
+                    })
+                  : _c("div", {
+                      staticClass: "progress-bar progress-bar-danger",
+                      style: "width:" + _vm.percentVolume + "%",
+                      attrs: {
+                        role: "progressbar",
+                        "aria-valuenow": "77",
+                        "aria-valuemin": "0",
+                        "aria-valuemax": "100"
+                      }
+                    })
+              ]
+            )
+          ])
         ]
       )
     ]),
     _vm._v(" "),
-    _vm._m(1),
+    _vm._m(0),
     _vm._v(" "),
-    _vm._m(2)
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "widget-box-2" }, [
-      _c("div", { staticClass: "widget-detail-2" }, [
-        _c(
-          "span",
-          { staticClass: "badge badge-success badge-pill pull-left m-t-20" },
-          [_vm._v("95%\n"), _c("i", { staticClass: "mdi mdi-trending-up" })]
-        ),
-        _vm._v(" "),
-        _c("h2", { staticClass: "mb-0" }, [_vm._v(" 3452/3561 ")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-muted m-b-25" }, [
-          _vm._v("Lần bơm cuối cùng: 12:30 23/12/2019")
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "progress progress-bar-success-alt progress-sm mb-0" },
-        [
-          _c("div", {
-            staticClass: "progress-bar progress-bar-success",
-            staticStyle: { width: "95%" },
-            attrs: {
-              role: "progressbar",
-              "aria-valuenow": "77",
-              "aria-valuemin": "0",
-              "aria-valuemax": "100"
-            }
-          })
-        ]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -12366,7 +12457,7 @@ var staticRenderFns = [
                 staticClass: "badge badge-primary badge-pill pull-left m-t-20"
               },
               [
-                _vm._v("32%\n                               "),
+                _vm._v("32%\n                            "),
                 _c("i", { staticClass: "mdi mdi-trending-down" })
               ]
             ),
@@ -12416,7 +12507,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "card-box" }, [
         _c("h4", { staticClass: "header-title m-t-0 m-b-30" }, [
           _c("i", { staticClass: "mdi mdi-notification-clear-all m-r-5" }),
-          _vm._v("\n                   Đang Hoạt Động")
+          _vm._v("\n                Đang Hoạt Động")
         ]),
         _vm._v(" "),
         _c("ul", { staticClass: "list-group m-b-0 user-list" }, [

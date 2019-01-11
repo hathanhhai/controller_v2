@@ -18,13 +18,13 @@ class AppController extends Controller
     public function _actionPostRegister(){
 
         $user =  new User();
-        $user->username = "quangtuan";
+        $user->username = "phuongdung";
         $user->setting_id = "5";
         $user->type = "admin";
         $user->password = bcrypt('123456');
         $user->password_cover = Crypt::encrypt('123456');
         $user->role = [];
-        $user->area = 'b';
+        $user->area = 'A';
         $user->token = csrf_token();
         $user->save();
         return $this->checkResponse($user);
