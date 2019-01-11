@@ -4178,7 +4178,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).DEBUG;
+    r = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}).DEBUG;
   }
 
   return r;
@@ -28122,7 +28122,7 @@ __webpack_require__.r(__webpack_exports__);
 
  //const SocketInstance = socketio('http://35.190.163.213:3000/');
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_socket_io_extended__WEBPACK_IMPORTED_MODULE_5__["default"], socket_io_client__WEBPACK_IMPORTED_MODULE_6___default()('http://localhost:8005'));
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_socket_io_extended__WEBPACK_IMPORTED_MODULE_5__["default"], socket_io_client__WEBPACK_IMPORTED_MODULE_6___default()('http://35.190.163.213:8005/'));
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Loading', _components_Layouts_Loading__WEBPACK_IMPORTED_MODULE_7__["default"]);
 Object(vuex_router_sync__WEBPACK_IMPORTED_MODULE_3__["sync"])(_stores_store__WEBPACK_IMPORTED_MODULE_4__["default"], _routes___WEBPACK_IMPORTED_MODULE_2__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
@@ -29423,8 +29423,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\8.Projects\controller_v2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\8.Projects\controller_v2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/controller_v2/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/controller_v2/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),
