@@ -242,7 +242,7 @@
                 btn_status: {
                     btn_b2_status: false,
                     btn_b3_status: false,
-                    btn_b4_status: false,
+                     btn_b4_status: false,
                     btn_b5_status: false,
                     btn_b6_status: false,
                     btn_b7_status: false,
@@ -292,12 +292,11 @@
 
             });
             this.$socket.on("status_button_server", function (data) {
-                console.log(data);
                 _this.mappingResource(_this.btn_status, data.status);
-
             })
 
         }, mounted() {
+
             this.$socket.emit("status_button_client",{user:this.getStoreUser()});
             this.$socket.emit("init_controller_client", this.$store.state.user);
         },
@@ -371,7 +370,7 @@
                     this.$socket.emit('btn_change_status_client',
                         {
                             name: 'btn_b' + number + '_name',
-                            status: false,
+                            status: true,
                             user: this.getStoreUser(),
                             number:number
                         }
@@ -379,7 +378,7 @@
                     this.$socket.emit('btn_change_status_client',
                         {
                             name: 'btn_b' + number + '_name',
-                            status: true,
+                            status: false,
                             user: this.getStoreUser(),
                             number:number
                         }

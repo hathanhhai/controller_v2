@@ -11,7 +11,10 @@
     import ASetting from '../Areas/A/ASetting'
     export default {
         name: "Setting",
-        components:{ASetting}
+        components:{ASetting},
+        mounted(){
+            this.$socket.emit('client_clear_time');
+        },
     }
 </script>
 

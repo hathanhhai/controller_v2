@@ -12,8 +12,9 @@
     export default {
         name: "Controller",
         components:{AController},
-        mounted(){
 
+        mounted(){
+            this.$socket.emit('client_clear_time');
         }
     }
 </script>

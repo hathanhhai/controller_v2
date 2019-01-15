@@ -244,8 +244,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ACamera"
+  name: "ACamera",
+  data: function data() {
+    return {
+      image_webcam: ''
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    this.$socket.on('client_test_webcam', function (data) {
+      _this.image_webcam = "data:image/jpeg;base64,".concat(data.image);
+    });
+    this.$socket.emit('client_clear_time');
+    this.$socket.emit('client_btn_webcam', this.$store.state.user);
+  },
+  mounted: function mounted() {
+    var _this = this;
+  },
+  methods: {
+    btnSteam: function btnSteam() {
+      this.$socket.emit('client_clear_time');
+      this.$socket.emit('client_btn_webcam');
+    },
+    btnClear: function btnClear() {
+      this.$socket.emit('client_clear_time');
+    }
+  }
 });
 
 /***/ }),
@@ -549,8 +584,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.mappingResource(_this.btn_name, data);
     });
     this.$socket.on("status_button_server", function (data) {
-      console.log(data);
-
       _this.mappingResource(_this.btn_status, data.status);
     });
   },
@@ -639,12 +672,12 @@ __webpack_require__.r(__webpack_exports__);
     emitButton: function emitButton(number) {
       this.btn_status['btn_b' + number + '_status'] ? this.$socket.emit('btn_change_status_client', {
         name: 'btn_b' + number + '_name',
-        status: false,
+        status: true,
         user: this.getStoreUser(),
         number: number
       }) : this.$socket.emit('btn_change_status_client', {
         name: 'btn_b' + number + '_name',
-        status: true,
+        status: false,
         user: this.getStoreUser(),
         number: number
       });
@@ -765,6 +798,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AreaA",
   data: function data() {
@@ -772,7 +856,44 @@ __webpack_require__.r(__webpack_exports__);
       water_height: 0,
       timeRelay: 0,
       volume: 0,
-      percent: 0
+      percent: 0,
+      temperature: 0,
+      humidity: 0,
+      array_status_button: [],
+      btn_status: {
+        btn_b2_status: false,
+        btn_b3_status: false,
+        btn_b4_status: false,
+        btn_b5_status: false,
+        btn_b6_status: false,
+        btn_b7_status: false,
+        btn_b8_status: false,
+        btn_b9_status: false,
+        btn_b10_status: false,
+        btn_b11_status: false,
+        btn_b12_status: false,
+        btn_b13_status: false,
+        btn_b14_status: false,
+        btn_b15_status: false,
+        btn_b16_status: false
+      },
+      btn_name: {
+        btn_b2_name: "disable",
+        btn_b3_name: "disable",
+        btn_b4_name: "disable",
+        btn_b5_name: "disable",
+        btn_b6_name: "disable",
+        btn_b7_name: "disable",
+        btn_b8_name: "disable",
+        btn_b9_name: "disable",
+        btn_b10_name: "disable",
+        btn_b11_name: "disable",
+        btn_b12_name: "disable",
+        btn_b13_name: "disable",
+        btn_b14_name: "disable",
+        btn_b15_name: "disable",
+        btn_b16_name: "disable"
+      }
     };
   },
   created: function created() {
@@ -782,11 +903,26 @@ __webpack_require__.r(__webpack_exports__);
       _this.water_height = data.distant;
       _this.volume = data.volume;
     });
+    this.$socket.on('temperature_number_server', function (data) {
+      _this.temperature = data.temperature;
+      _this.humidity = data.humidity;
+    });
+    this.$socket.on("status_button_server", function (data) {
+      _this.mappingResource(_this.btn_status, data.status);
+
+      _this.mappingResource(_this.btn_name, data.name);
+    });
   },
   mounted: function mounted() {
     var _this2 = this;
 
+    this.$socket.emit('temperature_button_client', {
+      user: this.$store.state.user
+    });
     this.$socket.emit("distant_button_client", {
+      user: this.$store.state.user
+    });
+    this.$socket.emit('temperature_button_client', {
       user: this.$store.state.user
     });
     var time = Math.floor(Math.random() * 8500) + 2000;
@@ -796,6 +932,10 @@ __webpack_require__.r(__webpack_exports__);
       _this2.$socket.emit("distant_button_client", {
         user: _this2.$store.state.user
       });
+
+      _this2.$socket.emit("temperature_button_client", {
+        user: _this2.$store.state.user
+      });
     }, time);
     clearTimeout();
   },
@@ -803,6 +943,18 @@ __webpack_require__.r(__webpack_exports__);
     sendSocketTest: function sendSocketTest() {
       this.$socket.emit("distant_button_client", {
         user: this.$store.state.user
+      });
+    },
+    sendSocketTemperature: function sendSocketTemperature() {
+      this.$socket.emit('temperature_button_client', {
+        user: this.$store.state.user
+      });
+    },
+    mappingResource: function mappingResource(res, resources) {
+      Object.keys(res).forEach(function (key) {
+        if (resources.hasOwnProperty(key)) {
+          res[key] = resources[key];
+        }
       });
     }
   },
@@ -833,7 +985,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ASetting"
+  name: "ASetting",
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -1150,7 +1303,9 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AController: _Areas_A_AController__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    this.$socket.emit('client_clear_time');
+  }
 });
 
 /***/ }),
@@ -1185,9 +1340,18 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {};
   },
+  mounted: function mounted() {
+    this.$socket.emit('client_clear_time');
+    this.$socket.emit("status_button_client", {
+      user: this.getStoreUser()
+    });
+  },
   methods: {
     sendSocketTest: function sendSocketTest() {
       this.$socket.emit("btn-test", this.$store.state.user);
+    },
+    getStoreUser: function getStoreUser() {
+      return this.$store.state.user;
     }
   }
 });
@@ -1218,6 +1382,9 @@ __webpack_require__.r(__webpack_exports__);
   name: "Setting",
   components: {
     ASetting: _Areas_A_ASetting__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {
+    this.$socket.emit('client_clear_time');
   }
 });
 
@@ -3729,7 +3896,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -3748,7 +3915,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -3767,7 +3934,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -3786,7 +3953,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -3919,7 +4086,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -3938,7 +4105,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -3957,7 +4124,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -11642,36 +11809,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticStyle: { "margin-bottom": "10px" } }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-success", on: { click: _vm.btnSteam } },
+        [_vm._v("Phát")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", on: { click: _vm.btnClear } },
+        [_vm._v(" Dừng")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "card m-b-20 card-inverse text-white" }, [
+          _c("img", {
+            staticClass: "card-img img-fluid",
+            attrs: { src: _vm.image_webcam, alt: "Card image" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "card m-b-20 card-inverse text-white" }, [
-          _c("img", {
-            staticClass: "card-img img-fluid",
-            attrs: {
-              src: "/adminto/assets/images/gallery/6.jpg",
-              alt: "Card image"
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "card m-b-20 card-inverse text-white" }, [
-          _c("img", {
-            staticClass: "card-img img-fluid",
-            attrs: {
-              src: "/adminto/assets/images/gallery/6.jpg",
-              alt: "Card image"
-            }
-          })
-        ])
+    return _c("div", { staticClass: "col-md-6" }, [
+      _c("div", { staticClass: "card m-b-20 card-inverse text-white" }, [
+        _c("img", { staticClass: "card-img img-fluid" })
       ])
     ])
   }
@@ -12433,9 +12607,276 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(0),
+    _c("div", { staticClass: "col-xl-4 col-md-6" }, [
+      _c(
+        "div",
+        { staticClass: "card-box", on: { click: _vm.sendSocketTemperature } },
+        [
+          _c("h4", { staticClass: "header-title mt-0 m-b-30" }, [
+            _vm._v("Nhiệt độ")
+          ]),
+          _vm._v(" "),
+          _c("p", {}, [
+            _vm._v("Số Giây Trì Hoãn: " + _vm._s(_vm.timeRelay) + " (S)")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "widget-box-2" }, [
+            _c("div", { staticClass: "widget-detail-2" }, [
+              _c(
+                "span",
+                {
+                  staticClass: "badge badge-primary badge-pill pull-left m-t-20"
+                },
+                [
+                  _vm._v(
+                    "Độ ẩm: " +
+                      _vm._s(_vm.humidity) +
+                      "%\n                        "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("h2", { staticClass: "mb-0" }, [
+                _vm._v(" " + _vm._s(_vm.temperature) + "°C ")
+              ]),
+              _vm._v(" "),
+              _vm.temperature >= 27 && _vm.temperature <= 31
+                ? _c("p", { staticClass: "text-muted m-b-25 text-success" }, [
+                    _vm._v("Trạng thái: Ổn định")
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.temperature > 31
+                ? _c(
+                    "p",
+                    {
+                      staticClass: "text-muted m-b-25 text-danger",
+                      staticStyle: { color: "red !important" }
+                    },
+                    [_vm._v("Trạng thái: Nóng")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.temperature < 27
+                ? _c("p", { staticClass: "text-muted m-b-25 text-danger" }, [
+                    _vm._v("Trạng thái: Mát")
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "progress progress-bar-primary-alt progress-sm mb-0"
+              },
+              [
+                _vm.temperature >= 27 && _vm.temperature <= 31
+                  ? _c("div", {
+                      staticClass: "progress-bar progress-bar-success",
+                      staticStyle: { width: "100%" },
+                      attrs: {
+                        role: "progressbar",
+                        "aria-valuenow": "77",
+                        "aria-valuemin": "0",
+                        "aria-valuemax": "100"
+                      }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.temperature > 31
+                  ? _c("div", {
+                      staticClass: "progress-bar progress-bar-danger",
+                      staticStyle: { width: "100%" },
+                      attrs: {
+                        role: "progressbar",
+                        "aria-valuenow": "77",
+                        "aria-valuemin": "0",
+                        "aria-valuemax": "100"
+                      }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.temperature < 31
+                  ? _c("div", {
+                      staticClass: "progress-bar progress-bar-primary",
+                      staticStyle: { width: "100%" },
+                      attrs: {
+                        role: "progressbar",
+                        "aria-valuenow": "77",
+                        "aria-valuemin": "0",
+                        "aria-valuemax": "100"
+                      }
+                    })
+                  : _vm._e()
+              ]
+            )
+          ])
+        ]
+      )
+    ]),
     _vm._v(" "),
-    _vm._m(1)
+    _c("div", { staticClass: "col-xl-4 col-md-6" }, [
+      _c("div", { staticClass: "card-box" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("ul", { staticClass: "list-group m-b-0 user-list" }, [
+          _vm.btn_status.btn_b2_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(_vm._s(_vm.btn_name.btn_b2_name) + " - Đang hoạt động")
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b3_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(_vm._s(_vm.btn_name.btn_b3_name) + " - Đang hoạt động")
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b5_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(_vm._s(_vm.btn_name.btn_b5_name) + " - Đang hoạt động")
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b6_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(_vm._s(_vm.btn_name.btn_b6_name) + " - Đang hoạt động")
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b7_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(_vm._s(_vm.btn_name.btn_b7_name) + " - Đang hoạt động")
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b8_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(_vm._s(_vm.btn_name.btn_b8_name) + " - Đang hoạt động")
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b9_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(_vm._s(_vm.btn_name.btn_b9_name) + " - Đang hoạt động")
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b10_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(
+                    _vm._s(_vm.btn_name.btn_b10_name) + " - Đang hoạt động"
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b11_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(
+                    _vm._s(_vm.btn_name.btn_b11_name) + " - Đang hoạt động"
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b12_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(
+                    _vm._s(_vm.btn_name.btn_b12_name) + " - Đang hoạt động"
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b13_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(
+                    _vm._s(_vm.btn_name.btn_b13_name) + " - Đang hoạt động"
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b14_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(
+                    _vm._s(_vm.btn_name.btn_b14_name) + " - Đang hoạt động"
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b15_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(
+                    _vm._s(_vm.btn_name.btn_b15_name) + " - Đang hoạt động"
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.btn_status.btn_b16_status == true
+            ? _c("li", { staticClass: "list-group-item" }, [
+                _c("i", { staticClass: "mdi mdi-circle text-warning" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "name mt-l-5" }, [
+                  _vm._v(
+                    _vm._s(_vm.btn_name.btn_b16_name) + " - Đang hoạt động"
+                  )
+                ])
+              ])
+            : _vm._e()
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -12443,107 +12884,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xl-4 col-md-6" }, [
-      _c("div", { staticClass: "card-box" }, [
-        _c("h4", { staticClass: "header-title mt-0 m-b-30" }, [
-          _vm._v("Nhiệt độ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "widget-box-2" }, [
-          _c("div", { staticClass: "widget-detail-2" }, [
-            _c(
-              "span",
-              {
-                staticClass: "badge badge-primary badge-pill pull-left m-t-20"
-              },
-              [
-                _vm._v("32%\n                            "),
-                _c("i", { staticClass: "mdi mdi-trending-down" })
-              ]
-            ),
-            _vm._v(" "),
-            _c("h2", { staticClass: "mb-0" }, [_vm._v(" 32°C ")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "text-muted m-b-25 text-success" }, [
-              _vm._v("Trạng thái: Ổn định")
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "progress progress-bar-primary-alt progress-sm mb-0"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "progress-bar progress-bar-primary",
-                  staticStyle: { width: "77%" },
-                  attrs: {
-                    role: "progressbar",
-                    "aria-valuenow": "77",
-                    "aria-valuemin": "0",
-                    "aria-valuemax": "100"
-                  }
-                },
-                [
-                  _c("span", { staticClass: "sr-only" }, [
-                    _vm._v("77% Complete")
-                  ])
-                ]
-              )
-            ]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xl-4 col-md-6" }, [
-      _c("div", { staticClass: "card-box" }, [
-        _c("h4", { staticClass: "header-title m-t-0 m-b-30" }, [
-          _c("i", { staticClass: "mdi mdi-notification-clear-all m-r-5" }),
-          _vm._v("\n                Đang Hoạt Động")
-        ]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "list-group m-b-0 user-list" }, [
-          _c("li", { staticClass: "list-group-item" }, [
-            _c("i", { staticClass: "mdi mdi-circle text-warning" }),
-            _vm._v(" "),
-            _c("span", { staticClass: "name mt-l-5" }, [
-              _vm._v("Bóng 1 - Hoạt động: 3:30")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "list-group-item" }, [
-            _c("i", { staticClass: "mdi mdi-circle text-warning" }),
-            _vm._v(" "),
-            _c("span", { staticClass: "name mt-l-5" }, [
-              _vm._v("Bóng 1 - Hoạt động: 3:30")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "list-group-item" }, [
-            _c("i", { staticClass: "mdi mdi-circle text-warning" }),
-            _vm._v(" "),
-            _c("span", { staticClass: "name mt-l-5" }, [
-              _vm._v("Bóng 1 - Hoạt động: 3:30")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "list-group-item" }, [
-            _c("i", { staticClass: "mdi mdi-circle text-warning" }),
-            _vm._v(" "),
-            _c("span", { staticClass: "name mt-l-5" }, [
-              _vm._v("Bóng 1 - Hoạt động: 3:30")
-            ])
-          ])
-        ])
-      ])
+    return _c("h4", { staticClass: "header-title m-t-0 m-b-30" }, [
+      _c("i", { staticClass: "mdi mdi-notification-clear-all m-r-5" }),
+      _vm._v("\n                Đang Hoạt Động\n            ")
     ])
   }
 ]

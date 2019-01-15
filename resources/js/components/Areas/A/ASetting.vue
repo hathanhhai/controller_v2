@@ -7,7 +7,8 @@
 
 <script>
     export default {
-        name: "ASetting"
+        name: "ASetting",
+        mounted(){}
     }
 </script>
 

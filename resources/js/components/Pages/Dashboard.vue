@@ -19,11 +19,19 @@
             return {
 
             }
-        },methods:{
+        },
+        mounted(){
+            this.$socket.emit('client_clear_time');
+            this.$socket.emit("status_button_client",{user:this.getStoreUser()});
+        },
+        methods:{
             sendSocketTest(){
 
                 this.$socket.emit("btn-test",this.$store.state.user)
-            }
+            },
+            getStoreUser() {
+                return this.$store.state.user;
+            },
         }
 
     }
