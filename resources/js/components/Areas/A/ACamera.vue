@@ -36,7 +36,6 @@
         created() {
             var _this = this;
             this.$socket.on('client_test_webcam', function (data) {
-
                 _this.image_webcam = `data:image/jpeg;base64,${data.image}`
             });
             this.$socket.emit('client_clear_time');
@@ -50,7 +49,10 @@
         methods: {
             btnSteam() {
                 this.$socket.emit('client_clear_time');
-                this.$socket.emit('client_btn_webcam');
+                // setInterval(()=>{
+                    this.$socket.emit('client_btn_webcam');
+                // },1000/10)
+
             },
             btnClear() {
                 this.$socket.emit('client_clear_time');

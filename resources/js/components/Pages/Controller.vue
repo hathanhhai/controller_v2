@@ -14,7 +14,7 @@
         components:{AController},
 
         mounted(){
-            this.$socket.emit('client_clear_time');
+            // this.$socket.emit('client_clear_time');
         }
     }
 </script>

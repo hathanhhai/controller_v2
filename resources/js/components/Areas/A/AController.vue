@@ -280,7 +280,7 @@
         created() {
             var _this = this;
 
-
+            this.$socket.emit('client_clear_time');
             this.$socket.on("init_controller_server", function (data) {
                 // _this.mappingResource(_this.btn_status, data.status);
                 _this.mappingResource(_this.btn_name, data.name);

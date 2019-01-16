@@ -274,8 +274,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     btnSteam: function btnSteam() {
-      this.$socket.emit('client_clear_time');
-      this.$socket.emit('client_btn_webcam');
+      this.$socket.emit('client_clear_time'); // setInterval(()=>{
+
+      this.$socket.emit('client_btn_webcam'); // },1000/10)
     },
     btnClear: function btnClear() {
       this.$socket.emit('client_clear_time');
@@ -574,6 +575,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    this.$socket.emit('client_clear_time');
     this.$socket.on("init_controller_server", function (data) {
       // _this.mappingResource(_this.btn_status, data.status);
       _this.mappingResource(_this.btn_name, data.name);
@@ -916,6 +918,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
+    this.$socket.emit('client_clear_time');
     this.$socket.emit('temperature_button_client', {
       user: this.$store.state.user
     });
@@ -937,7 +940,6 @@ __webpack_require__.r(__webpack_exports__);
         user: _this2.$store.state.user
       });
     }, time);
-    clearTimeout();
   },
   methods: {
     sendSocketTest: function sendSocketTest() {
@@ -986,7 +988,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ASetting",
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    this.$socket.emit('client_clear_time');
+  }
 });
 
 /***/ }),
@@ -1303,8 +1307,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AController: _Areas_A_AController__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {
-    this.$socket.emit('client_clear_time');
+  mounted: function mounted() {// this.$socket.emit('client_clear_time');
   }
 });
 
@@ -1383,9 +1386,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     ASetting: _Areas_A_ASetting__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {
-    this.$socket.emit('client_clear_time');
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -3896,7 +3897,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -3953,7 +3954,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 

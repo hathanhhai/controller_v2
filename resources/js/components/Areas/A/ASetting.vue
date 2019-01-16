@@ -8,7 +8,9 @@
 <script>
     export default {
         name: "ASetting",
-        mounted(){}
+        mounted(){
+            this.$socket.emit('client_clear_time');
+        }
     }
 </script>
 

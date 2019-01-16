@@ -13,7 +13,7 @@
         name: "Setting",
         components:{ASetting},
         mounted(){
-            this.$socket.emit('client_clear_time');
+
         },
     }
 </script>

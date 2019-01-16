@@ -217,6 +217,7 @@
 
         },
         mounted() {
+            this.$socket.emit('client_clear_time');
             this.$socket.emit('temperature_button_client',{user: this.$store.state.user});
             this.$socket.emit("distant_button_client", {user: this.$store.state.user});
             this.$socket.emit('temperature_button_client',{user: this.$store.state.user});
@@ -224,12 +225,11 @@
             var timeRelay = time/1000;
             this.timeRelay = timeRelay.toFixed(2);
 
-
             setInterval(() => {
                 this.$socket.emit("distant_button_client", {user: this.$store.state.user});
                 this.$socket.emit("temperature_button_client", {user: this.$store.state.user});
             },time  );
-            clearTimeout();
+
 
         },
         methods: {
